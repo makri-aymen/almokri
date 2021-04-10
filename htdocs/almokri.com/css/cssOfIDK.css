@@ -1,0 +1,58 @@
+:root {
+  --modal-duration: 1s;
+  --modal-color: #428bca;
+}
+.modal{
+  display: none;
+  position: fixed;
+  z-index: 4;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.modal-content {
+  margin: 10% auto;
+  width: 60%;
+  overflow: hidden;
+  animation-name: modalopen;
+  animation-duration: var(--modal-duration);
+}
+.close{
+  color: #ccc;
+  float: right;
+  font-size: 30px;
+  color: #fff;
+  margin: 10px;
+  z-index:4;
+  position: absolute;
+}
+.close:hover, .close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+.addabook{
+  color:#363636;
+  font-size:40px;
+  padding-top:25px;
+  text-align:center;
+}
+@media screen and (max-width: 800px) {
+  .close {
+    font-size: 15px;
+  }
+  .addabook{
+    font-size:15px;
+    padding-top:15px;
+  }
+  .modal-content {
+    width: 95%;
+  }
+}
+
+
+
+

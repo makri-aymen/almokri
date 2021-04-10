@@ -1,0 +1,11 @@
+function _(el){
+	return document.getElementById(el);
+}
+function uploadFile(){
+	var file = _("file1").files[0];
+
+intervalId = setInterval(loopAjax, 10);
+	header('content-type:application/json');
+				usleep(50000);
+				clearstatcache(false, $filename);
+ftruncate($desc, $_POST['size']);

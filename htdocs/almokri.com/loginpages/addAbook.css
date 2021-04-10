@@ -1,0 +1,243 @@
+* {
+    box-sizing: border-box;
+    margin:0;
+    font-family: Delicious;
+}
+.imagesave{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 40px;
+}
+.allthecontent{
+    width: 90%;
+    height:auto;
+    overflow: hidden;
+    border: 6px solid #363636;
+    border-radius: 15px;
+    margin-top: 40px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.right{
+    float: right;
+    width:50%;
+    height: auto;
+}
+.left{
+    float: left;
+    width:50%;
+    height: auto;
+}
+.pforsection{
+    float: right;
+    margin-right: 50px;
+    margin-top: 10px;
+    font-size: 20px;
+    padding: 8px;
+    clear: both;
+    color: #363636;
+}
+.divofinput{
+    float: right;
+    margin-right: 20px;
+    margin-top:6px;
+    border: 6px solid #363636;
+    border-radius: 15px;
+    width: 80%;
+    clear: both;
+}
+  input[type="number"]::-webkit-outer-spin-button , input[type="number"]::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+}
+  input[type=text], input[type="number"]{
+    float:right;
+    font-size:16px;
+    background-color:transparent;
+    padding:3px;
+    text-align:right;
+    border:0px;
+    width:100%;
+}
+
+/* The container */
+.pofradio{
+    font-size: 20px;
+    color: #363636;
+}
+.container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    float: right;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+
+  /* Hide the browser's default radio button */
+  .container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+  
+  /* Create a custom radio button */
+  .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: rgba(247, 247, 247,0.6);
+    border-radius: 50%;
+  }
+  
+  /* On mouse-over, add a grey background color */
+  .container:hover input ~ .checkmark {
+    background-color: rgba(247, 247, 247,0.3);
+  }
+  
+  /* When the radio button is checked, add a blue background */
+  .container input:checked ~ .checkmark {
+    background-color: #363636;
+  }
+  
+  /* Create the indicator (the dot/circle - hidden when not checked) */
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  /* Show the indicator (dot/circle) when checked */
+  .container input:checked ~ .checkmark:after {
+    display: block;
+  }
+  
+  /* Style the indicator (dot/circle) */
+  .container .checkmark:after {
+      top: 9px;
+      left: 9px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #eee;
+  }
+  .spt1{
+      width:50%;
+      float: right;
+      padding-left: 80px;
+  }
+  .spt2{
+    width:50%;
+    float: right;
+    padding-left: 80px;
+}
+.buttonleft{
+    width: 30%;
+    height:35px;
+    background-color:#363636;
+    overflow: hidden;
+    border: 0px;
+}
+.buttonright{
+    width: 30%;
+    height:35px;
+    background-color:#363636;
+    overflow: hidden;
+}
+
+
+
+
+.dropdown__button {
+	background-color: #363636;
+	color: white;
+	padding: 10px;
+	cursor: pointer;
+	width: 80%;
+    text-align: center;
+}
+.dropdown__button:hover, .dropdown__button:focus {
+	background-color: #444;
+}
+.dropdown {
+	position: relative;
+    display: inline-block;
+    clear: both;
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;
+    margin-top:20px;
+}
+.dropdown__content {
+	position: absolute;
+	display: none;
+	background-color: #f1f1f1;
+	text-align: center;
+	width: 80%;
+	box-shadow: 4px 3px 10px 0px rgba(0, 0, 0, 0.2);
+	z-index: 1;
+	padding: 0;
+	margin: 0;
+    list-style-type: none;
+    margin-top: 38px;
+    overflow: scroll;
+    height: 200px;
+}
+::-webkit-scrollbar { 
+    display: none; 
+}
+.dropdown__content li {
+	color: black;
+	cursor: pointer;
+	padding: 10px;
+	text-decoration: none;
+	display: block;
+}
+.dropdown__content li:hover {
+	background-color: #ddd;
+}
+.show {
+	display: block;
+}
+.alldivlefta{
+    border-radius: 15px;
+    width: 100%;
+    float: left;
+    clear: both;
+    display: block;
+}
+.aboveanysection{
+    background-color:#363636;
+    height:50px;
+    width:100%;
+    border-radius: 15px 15px 0px 0px;
+  }
+  .upperpofallsection{
+    padding-right: 20px;
+    font-size: 20px;
+    color: #08b698;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 0;
+  }
+
+  .upperpofallsectionnnnnnn{
+    font-size: 20px;
+    color: #08b698;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding-left: 20px;
+  }

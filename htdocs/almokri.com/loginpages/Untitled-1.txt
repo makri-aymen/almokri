@@ -1,0 +1,85 @@
+if(isset($_POST["nameofthebook"])){
+    $author=$_COOKIE['theauthor'];
+    $nameofbook=$_POST["nameofthebook"];
+    $numberofpages=$_POST["numberofages"];
+    $yearofedition=$_POST["yearofedition"];
+    $descritionofbook=$_POST["descritionofbook"];
+    $linkofbook=$_POST["linkofbook"];
+    $keywords=$_POST["keywords"];   
+     $catygory=$_POST["radio"];
+
+    $inserte=  "SELECT `id` FROM `authors` WHERE fullname LIKE '%".$author."%' ";
+    $intofauthoro=@mysqli_query($conn, $inserte);
+    $intofauthor=@mysqli_fetch_assoc($intofauthoro);
+    $intofauthor=$intofauthor['id'];
+
+    //get image file
+    $file_name = $_FILES['myphoto']['name'];
+    $file_size = $_FILES['myphoto']['size'];
+    $file_tmp = $_FILES['myphoto']['tmp_name'];
+    $file_ext = @strtolower(end(explode('.', $_FILES['myphoto']['name'])));
+    $target_dir = '..\data\images_books\\';
+    $target_file = $target_dir . $nameofbook.".".$file_ext;
+    //get pdf file
+    $file_nameP = $_FILES['mypdf']['name'];
+    $file_sizeP = $_FILES['mypdf']['size'];
+    $file_tmpP = $_FILES['mypdf']['tmp_name'];
+    $file_extP = @strtolower(end(explode('.', $_FILES['mypdf']['name'])));
+    $target_dirP = '..\data\pdf_books\\';
+    $target_fileP = $target_dirP . $nameofbook.".".$file_extP;
+
+    $errorstr="";
+    if($file_size==0 && $file_sizeP==0 && $author==0 && $nameofbook==0 &&  $yearofedition==0 && $descritionofbook==0 && $linkofbook==0 && $keywords==0 && $radio==0){
+      $errorstr=" اجباري ملئ جميع الخانات ";
+    }else if($file_size>3097152 && $file_sizeP>20097152){
+      $errorstr =" حجم الملف كبير جدا ";
+    }else{ 
+        $errorstr =" تم ";
+        $content='
+        <title>'.$nameofbook.' - المقرئ</title>
+        <meta name="description" content="الكتاب الكامل تحميل الكتب احسن الكتب">
+        <meta name=keywords" content="'.$keywords.'">
+        <meta name="author" content="'.$author.'">
+        ';
+//        $allcontent="";
+        $fp = fopen( "../data/modelhtml.txt","a+");
+//        while(!feof($fp)){
+            $line=fread($fp,filesize("../data/modelhtml.txt"));
+//            if($line=="******************************************"){
+//                $allcontent+=$content;
+//            }else{
+//                $allcontent+=$line;
+//            }
+//        }
+        $line=explode("\r\n", $line);
+        $line[70]=$content; 
+        $line=implode("\r\n", $line); 
+
+        $fp2 = fopen( "../data/html_books/$nameofbook.php","w+");
+        fwrite($fp2,$line);
+        fclose($fp2);
+        fclose($fp);
+        $htmllink="../data/html_books/$nameofbook.php";
+        $idofbook=@mysqli_query($conn,"SELECT `id` FROM `all_books` ORDER BY id DESC LIMIT 1");
+        $idofbooki=@mysqli_fetch_assoc($idofbook);
+        $idofbooki=$idofbooki['id']+1;
+
+//        $file_name="hhhhhhhhhhhhhhh";
+//        $file_nameP="gggggggggggggg";
+        
+   //     $nameofbook="nameofbook";
+    //    $numberofpages=200;
+    //    $yearofedition=1998;
+     //   $catygory=1;
+     //   $descritionofbook="descripttion";
+     //   $linkofbook="linkofthebook";
+      //  $intofauthor=2;
+     //   $htmllink="linkhtml";
+     $file_name="/".$nameofbook.".".$file_ext;
+     $file_nameP="/".$nameofbook.".".$file_extP;
+        $inserti="INSERT INTO `all_books`(`id`, `name` , `numberofpages` , `numberofdownloads` , `yearofedition` , `category` , `imglink` , `pdflink`  , `aboutTheBook`, `audiolink`, `author`, `htmllink`) VALUES ($idofbooki,'$nameofbook',$numberofpages,0,$yearofedition,$catygory,'$file_name','$file_nameP','$descritionofbook','$linkofbook',$intofauthor,'$htmllink')";
+        @mysqli_query($conn, $inserti);
+        @move_uploaded_file($file_tmp, $target_file);
+        @move_uploaded_file($file_tmpP, $target_fileP);
+   }
+  }
